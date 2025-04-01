@@ -7,8 +7,7 @@
     <title>Devansh-Developer Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,7 +20,7 @@
             color: #e0e0e0;
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background-image: url('devansh.heic'); /* Profile picture as background */
+            background-image: url('devansh.heic');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -70,45 +69,45 @@
         }
 
         .firstSection {
-    display: flex;
-    align-items: center;
-    min-height: 100vh; /* Make section take full viewport height */
-    padding: 20px;
-}
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-.leftSection {
-    font-size: 2.5rem;
-    text-align: left; /* Align text to the left */
-    max-width: 50%; /* Adjust max width as needed */
-}
+        .leftSection {
+            font-size: 2.5rem;
+            text-align: left;
+            max-width: 50%;
+        }
 
-.buttons {
-    margin-top: 30px;
-}
+        .buttons {
+            margin-top: 30px;
+        }
 
-.leftSection .btn {
-    padding: 15px 25px;
-    margin: 10px 10px;
-    background: #424242;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .leftSection .btn {
+            padding: 15px 25px;
+            margin: 10px 10px;
+            background: #424242;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.leftSection .btn:hover {
-    background-color: #616161;
-}
+        .leftSection .btn:hover {
+            background-color: #616161;
+        }
 
-.purple {
-    color: #000000;
-}
+        .purple {
+            color: #000000;
+        }
 
-#element {
-    color: #000000;
-}
+        #element {
+            color: #000000;
+        }
 
         .secondSection {
             max-width: 80vw;
@@ -210,6 +209,37 @@
         .achievements-footer a:hover {
             color: #81d4fa;
         }
+
+        @media screen and (max-width: 768px) {
+            .leftSection {
+                font-size: 2rem;
+                max-width: 100%;
+            }
+
+            .buttons {
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer>div {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -222,7 +252,7 @@
             <div class="right">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="About.html">About</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="skills.html">Skills</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="achievements.html">Achievements</a></li>
@@ -248,32 +278,6 @@
                 </div>
             </div>
         </section>
-        <!-- <section class="secondSection">
-            <hr>
-            <h1>Skills</h1>
-            <div class="skills-container">
-                <div class="skill-card">
-                    <img src="MeanStack.png" alt="MEAN Stack" class="skill-icon">
-                    <p>MEAN Stack Developer</p>
-                </div>
-                <div class="skill-card">
-                    <img src="mern.png" alt="MERN Stack" class="skill-icon">
-                    <p>MERN Stack Developer</p>
-                </div>
-                <div class="skill-card">
-                    <img src="ios.png" alt="iOS Developer" class="skill-icon">
-                    <p>iOS Developer</p>
-                </div>
-                <div class="skill-card">
-                    <img src="android.png" alt="Android Developer" class="skill-icon">
-                    <p>Android Developer</p>
-                </div>
-                <div class="skill-card">
-                    <img src="cybersecurity.png" alt="Cybersecurity Analyst" class="skill-icon">
-                    <p>Cybersecurity Analyst</p>
-                </div>
-            </div>
-        </section> -->
     </main>
 
     <footer>
