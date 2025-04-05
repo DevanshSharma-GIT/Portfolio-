@@ -7,9 +7,7 @@
     <title>Projects - Devansh's Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -69,8 +67,8 @@
 
         .project-card {
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
             padding: 20px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -89,16 +87,7 @@
         .project-card ul {
             font-size: 1.1rem;
             line-height: 1.6;
-            list-style: none;
-        }
-
-        .project-card ul li::before {
-            content: "\2022";
-            color: aqua;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            list-style: disc;
         }
 
         footer {
@@ -125,6 +114,21 @@
             margin-right: 12px;
             vertical-align: middle;
             opacity: 0.95;
+        }
+
+        .project-link {
+            display: inline-block;
+            background-color: aqua;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: #00ced1;
         }
     </style>
 </head>
@@ -168,6 +172,27 @@
                     <li>Implemented Core Data for data persistence.</li>
                 </ul>
             </div>
+            <div class="project-card">
+              <h2>E-Commerce Website (Devecom)</h2>
+              <ul>
+                <li>Developed a fully functional e-commerce platform.</li>
+                <li>Utilized React, React Router v6, and Context API for state management.</li>
+                <li>Implemented a dynamic cart system and secure checkout process.</li>
+                <li>Employed responsive design principles for seamless user experience across devices.</li>
+                <li>Integrated intelligent search and filtering functionalities.</li>
+              </ul>
+              <a href="YOUR_DEVECOM_SITE_URL" class="project-link" target="_blank">Visit Devecom Site</a>
+            </div>
+            <div class="project-card">
+                <h2>Finance Tracker Application</h2>
+                <ul>
+                    <li>Created a finance tracker app to manage personal finances.</li>
+                    <li>Built using React for the front-end and Node.js with Express for the back-end.</li>
+                    <li>Implemented user authentication and data persistence with MongoDB.</li>
+                    <li>Provided features for tracking income, expenses, and generating financial reports.</li>
+                </ul>
+                <a href="YOUR_FINANCE_TRACKER_SITE_URL" class="project-link" target="_blank">Visit Finance Tracker Site</a>
+            </div>
         </section>
     </main>
 
@@ -180,6 +205,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="achievements.html">Achievements</a></li>
                     <li><a href="contact-me.html">Contact Me</a></li>
