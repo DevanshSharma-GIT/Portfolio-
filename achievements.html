@@ -57,7 +57,7 @@
         }
 
         .achievements-container,
-        .university-acceptances-container { /* Added container for university acceptances */
+        .university-acceptances-container {
             max-width: 80vw;
             margin: 40px auto;
             padding: 20px;
@@ -67,7 +67,7 @@
         }
 
         .achievement-card,
-        .university-acceptance-card { /* Added card for university acceptances */
+        .university-acceptance-card {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
@@ -130,6 +130,21 @@
             vertical-align: middle;
             opacity: 0.95;
         }
+
+        .project-link {
+            display: inline-block;
+            background-color: aqua;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: #00ced1;
+        }
     </style>
 </head>
 
@@ -154,6 +169,30 @@
 
     <main>
         <section class="achievements-container">
+            <!-- New Hackathon Achievement -->
+            <div class="achievement-card">
+                <h2>National Level Hackathon Top 5 | BGSCET (2023)</h2>
+                <ul>
+                    <li>Secured Top 5 position among 1000+ participants from 50+ colleges</li>
+                    <li>Developed <strong>HeritEdge</strong> - Cultural Heritage Preservation Platform</li>
+                    <li>Key Features:
+                        <ul>
+                            <li>3D artifact scanning & digital archiving</li>
+                            <li>AR-based virtual museum experiences</li>
+                            <li>Blockchain-based provenance tracking</li>
+                            <li>AI-powered restoration suggestions</li>
+                        </ul>
+                    </li>
+                    <li>Tech Stack: React, Three.js, ARCore, Solidity, Python</li>
+                </ul>
+                <a href="https://devanshsharma-git.github.io/HeritEdge/" 
+                   class="project-link" 
+                   target="_blank">
+                    View Project
+                </a>
+            </div>
+
+            <!-- Existing Achievements -->
             <div class="achievement-card">
                 <h2>French Exchange Program | Poitiers, France (Mar 2019)</h2>
                 <ul>
@@ -162,6 +201,7 @@
                     <li>Actively participated in cross-cultural dialogues and community-oriented projects, including fundraising, volunteer work, and STEM education outreach.</li>
                 </ul>
             </div>
+
             <div class="achievement-card">
                 <h2>Student Council | Kolkata, India (Jan 2017 – May 2019)</h2>
                 <ul>
@@ -169,6 +209,7 @@
                     <li>Leadership & Achievements: Served as Vice-Captain for two consecutive years, earned multiple Sports Day medals, led March Past events, conducted celebrity interviews, and contributed as a member of the Editorial Board.</li>
                 </ul>
             </div>
+
             <div class="achievement-card">
                 <h2>Content Creation + Esports</h2>
                 <ul>
@@ -227,5 +268,4 @@
         };
     </script>
 </body>
-
 </html>
