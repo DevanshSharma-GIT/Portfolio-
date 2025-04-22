@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Devansh's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background-color: blueviolet;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: red;
+            font-size: 1.04rem;
+        }
+
+        .projects-container {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: aqua;
+        }
+
+        .project-card ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            list-style: disc;
+        }
+
+        footer {
+            background-color: #0e0e1a;
+            padding: 40px 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        footer .footer-rights {
+            text-align: center;
+            color: gray;
+            padding: 12px 0;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+            opacity: 0.95;
+        }
+
+        .project-link {
+            display: inline-block;
+            background-color: aqua;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: #00ced1;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                <img src="devansh.heic" alt="Profile Picture" class="profile-pic"> Devansh.com
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact-me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-container">
+            <!-- Existing Projects -->
+            <div class="project-card">
+                <h2>Full-Stack Portfolio Website</h2>
+                <ul>
+                    <li>Designed and built a portfolio website.</li>
+                    <li>Utilized HTML, CSS, JavaScript, and Next.js for front-end.</li>
+                    <li>Implemented Node.js and MongoDB for back-end.</li>
+                    <li>Leveraged MERN/MEAN stack expertise.</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h2>HeritEdge (Cultural Tourism Platform)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>AI-driven multilingual chatbot (WhatsApp integration)</li>
+                            <li>Gamified AR/VR-guided cultural tours</li>
+                            <li>Women safety heatmaps & crowd analytics</li>
+                            <li>Blockchain-based data encryption</li>
+                            <li>AI-powered ticketing & geo-tagged mapping</li>
+                            <li>Multilingual support & OAuth-secured portals</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python, Flask, LangChain</li>
+                            <li>APIs: SerpAPI, Geoapify, Weather APIs</li>
+                            <li>AI/ML: Sarvam.ai, Groq, custom models</li>
+                            <li>Security: IPFS blockchain, encryption layer</li>
+                            <li>Tools: WebSockets, AR/VR frameworks</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://devanshsharma-git.github.io/HeritEdge/" 
+                   class="project-link" 
+                   target="_blank">
+                    View GitHub Repository
+                </a>
+            </div>
+
+            <!-- New DevFinancing Project -->
+            <div class="project-card">
+                <h2>DevFinancing (Personal Finance Tracker)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Track income and expenses with categories (e.g., Food, Travel).</li>
+                            <li>Manage transactions with add, edit, and delete functionality.</li>
+                            <li>Display total spent and remaining balance summaries.</li>
+                            <li>Filter transactions by month and year.</li>
+                            <li>Secure user authentication with login and registration.</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python with Flask framework.</li>
+                            <li>Frontend: HTML, CSS (dark theme), and vanilla JavaScript.</li>
+                            <li>Data Storage: JSON files for transactions and users.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://p5pd6l4t-5000.inc1.devtunnels.ms/" 
+                   class="project-link" 
+                   target="_blank">
+                    Visit Project
+                </a>
+            </div>
+
+            <!-- New DevQuiz Project -->
+            <div class="project-card">
+                <h2>DevQuiz (Interactive Quiz Platform)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Developed a dynamic quiz application using Flask.</li>
+                            <li>Features random questions from various topics via The Trivia API.</li>
+                            <li>Includes user authentication, scoring, and a leaderboard.</li>
+                            <li>Utilizes SQLite for persistent data storage and session management.</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python with Flask framework.</li>
+                            <li>Frontend: HTML, CSS, and vanilla JavaScript.</li>
+                            <li>API: The Trivia API for question data.</li>
+                            <li>Database: SQLite for user scores and settings.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://p5pd6l4t-5000.inc1.devtunnels.ms/" 
+                   class="project-link" 
+                   target="_blank">
+                    Visit Project
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Devansh's Portfolio</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright ©DEVANSH.COM | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+        };
+    </script>
+</body>
+</html>

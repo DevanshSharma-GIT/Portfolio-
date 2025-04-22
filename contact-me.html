@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Devansh's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background-color: blueviolet;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: red;
+            font-size: 1.04rem;
+        }
+
+        .contact {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .contact h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact input,
+        .contact textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .contact button {
+            padding: 12px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .contact button:hover {
+            background-color: red;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #0e0e1a;
+            padding: 40px 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        footer .footer-rights {
+            text-align: center;
+            color: gray;
+            padding: 12px 0;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                <img src="devansh.heic" alt="Profile Picture" class="profile-pic"> Devansh.com
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact">
+            <h1>Contact Me</h1>
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+
+            <div class="contact-info">
+                <p>P: +91 8584000226</p>
+                <p>E: devansh.work6@gmail.com</p>
+                <p>LinkedIn: <a href="http://bit.ly/4ldp98d" target="_blank" rel="noopener noreferrer">http://bit.ly/4ldp98d</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Devansh's Portfolio</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169;DEVANSH.COM | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = e.target.name.value;
+            const email = e.target.email.value;
+            const message = e.target.message.value;
+
+            const response = await fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        window.onload = () => {
+            document.body.classList.add('loaded');
+        };
+    </script>
+</body>
+
+</html>
