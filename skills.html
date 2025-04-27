@@ -199,6 +199,42 @@
         .certification-card ul li {
             margin-bottom: 5px;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
     </style>
 </head>
 <body class="loaded">
@@ -222,7 +258,7 @@
     <main>
         <section class="aboutMe">
             <h1>Skills</h1>
-            <p>Hello! I’m Devansh, a passionate developer specializing in web and mobile applications with a strong focus on cutting-edge technologies and security practices. I have a robust foundation in diverse programming languages, frameworks, and cybersecurity principles, enabling me to tackle complex challenges and build innovative solutions.</p>
+            <p>Hello! I'm Devansh, a passionate developer specializing in web and mobile applications with a strong focus on cutting-edge technologies and security practices. I have a robust foundation in diverse programming languages, frameworks, and cybersecurity principles, enabling me to tackle complex challenges and build innovative solutions.</p>
             <p>My experience spans across front-end and back-end development, mobile app creation for both iOS and Android, and in-depth knowledge of cybersecurity, including ethical hacking and cloud security. I am committed to creating efficient, secure, and user-friendly applications while continuously expanding my technical expertise.</p>
             <p>When I'm not immersed in code or exploring the latest security trends, you can find me engaging with the tech community, contributing to open-source projects, or staying updated with advancements in AI/ML and blockchain technologies.</p>
             <p>My goal is to leverage my comprehensive skillset to develop impactful and secure solutions, always striving for excellence and innovation in the ever-evolving tech landscape.</p>
@@ -321,12 +357,19 @@
                     <h2>Certifications</h2>
                     <ul>
                         <li>Udemy iOS Development Bootcamp</li>
-                        <li>Udemy Web Development Bootcamp</li>
+                        <li><a href="#" id="webDevCert" style="color: white; text-decoration: none;">Udemy Web Development Bootcamp</a></li>
                     </ul>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="certImage" src="udemy1.png" alt="Udemy Web Development Certificate">
+    </div>
+
     <footer>
         <div class="footer">
             <div class="footer-first">
@@ -358,6 +401,26 @@
                 backSpeed: 30,
                 backDelay: 1000
             });
+
+            // Modal functionality
+            const modal = document.getElementById("certModal");
+            const certLink = document.getElementById("webDevCert");
+            const closeBtn = document.getElementsByClassName("close")[0];
+
+            certLink.onclick = function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
+
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         };
     </script>
 </body>
