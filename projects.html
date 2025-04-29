@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Devansh's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .projects-container {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.2s; }
+        .project-card:nth-child(2) { animation-delay: 0.4s; }
+        .project-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .project-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 3px;
+        }
+
+        .project-card ul {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-card ul ul {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .project-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .project-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #6a11cb;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .project-link:hover::before {
+            left: 100%;
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+        }
+
+        .project-link.danger {
+            background: linear-gradient(90deg, #ff4d4d, #ff6b6b);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #0e0e1a 0%, #1a1a2e 100%);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-rights {
+            text-align: center;
+            color: #666;
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+            opacity: 0.95;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                height: auto;
+                padding: 15px;
+                flex-direction: column;
+            }
+
+            nav .left {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            nav .right {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+
+            .dropdown {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+                padding: 10px 0;
+                z-index: 100;
+            }
+
+            .dropdown.open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .dropdown a {
+                padding: 15px;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .projects-container {
+                padding: 10px;
+                margin: 20px;
+                max-width: 90vw;
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .project-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+
+        .projects-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        nav .left {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                Devansh's Portfolio
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-container">
+            <!-- DevFarm Project -->
+            <div class="project-card">
+                <h2>DevFarm (Local Discovery App)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Modern UI with interactive DevAI assistant</li>
+                            <li>Real-time vendor discovery and filtering</li>
+                            <li>Interactive maps for location tracking</li>
+                            <li>Detailed vendor profiles and product catalogs</li>
+                            <li>Cross-platform compatibility (iOS/Android)</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Frontend: React Native with Expo</li>
+                            <li>Language: TypeScript</li>
+                            <li>Navigation: React Navigation v6</li>
+                            <li>Maps: React Native Maps integration</li>
+                            <li>UI: Custom components with StyleSheet</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/DevanshSharma-GIT/DevFarm" 
+                       class="project-link" 
+                       target="_blank">
+                        View GitHub Repository
+                    </a>
+                    <a href="demo-2.mp4" 
+                       class="project-link danger" 
+                       target="_blank">
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- DevCrypto Project -->
+            <div class="project-card">
+                <h2>DevCrypto (Cryptocurrency Tracker)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Real-time cryptocurrency price tracking with WebSocket integration</li>
+                            <li>Interactive price charts and market statistics dashboard</li>
+                            <li>Advanced sorting and filtering capabilities</li>
+                            <li>Responsive design with modern UI/UX</li>
+                            <li>Dark theme optimized for trading</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Frontend: React 18, TypeScript, Redux Toolkit</li>
+                            <li>Styling: Styled Components with animations</li>
+                            <li>Data: WebSocket for real-time updates</li>
+                            <li>Charts: Chart.js for price visualization</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://github.com/DevanshSharma-GIT/DevCrypto" 
+                   class="project-link" 
+                   target="_blank">
+                    View GitHub Repository
+                </a>
+            </div>
+
+            <!-- HeritEdge Project -->
+            <div class="project-card">
+                <h2>HeritEdge (Cultural Tourism Platform)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>AI-driven multilingual chatbot (WhatsApp integration)</li>
+                            <li>Gamified AR/VR-guided cultural tours</li>
+                            <li>Women safety heatmaps & crowd analytics</li>
+                            <li>Blockchain-based data encryption</li>
+                            <li>AI-powered ticketing & geo-tagged mapping</li>
+                            <li>Multilingual support & OAuth-secured portals</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python, Flask, LangChain</li>
+                            <li>APIs: SerpAPI, Geoapify, Weather APIs</li>
+                            <li>AI/ML: Sarvam.ai, Groq, custom models</li>
+                            <li>Security: IPFS blockchain, encryption layer</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://github.com/DevanshSharma-GIT/HeritEdge" 
+                   class="project-link" 
+                   target="_blank">
+                    View GitHub Repository
+                </a>
+            </div>
+
+            <!-- DevFinancing Project -->
+            <div class="project-card">
+                <h2>DevFinancing (Personal Finance Tracker)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Track income and expenses with categories</li>
+                            <li>Manage transactions with CRUD operations</li>
+                            <li>Display total spent and remaining balance</li>
+                            <li>Filter transactions by month and year</li>
+                            <li>Secure user authentication system</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python with Flask framework</li>
+                            <li>Frontend: HTML, CSS (dark theme), JavaScript</li>
+                            <li>Data Storage: JSON files for transactions</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://p5pd6l4t-5000.inc1.devtunnels.ms/" 
+                   class="project-link" 
+                   target="_blank">
+                    Visit Project
+                </a>
+            </div>
+
+            <!-- DevQuiz Project -->
+            <div class="project-card">
+                <h2>DevQuiz (Interactive Quiz Platform)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Dynamic quiz application using Flask</li>
+                            <li>Random questions from The Trivia API</li>
+                            <li>User authentication and leaderboard</li>
+                            <li>SQLite for data persistence</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python with Flask framework</li>
+                            <li>Frontend: HTML, CSS, JavaScript</li>
+                            <li>API: The Trivia API integration</li>
+                            <li>Database: SQLite for user data</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://p5pd6l4t-5000.inc1.devtunnels.ms/" 
+                   class="project-link" 
+                   target="_blank">
+                    Visit Project
+                </a>
+            </div>
+
+            <!-- DevDataAnalysis Project -->
+            <div class="project-card">
+                <h2>DevDataAnalysis (Sentiment Analysis)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Real-time sentiment analysis of text</li>
+                            <li>Multiple sentiment score categories</li>
+                            <li>Interactive web interface</li>
+                            <li>RESTful API support</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python, Flask, VADER Sentiment</li>
+                            <li>Frontend: HTML5, CSS3, JavaScript</li>
+                            <li>Data Science: NLTK, Pandas, NumPy</li>
+                            <li>Tools: Git, REST APIs, Gunicorn</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://github.com/DevanshSharma-GIT/DevDataAnalysis" 
+                   class="project-link" 
+                   target="_blank">
+                    View GitHub Repository
+                </a>
+            </div>
+
+            <!-- DevSecure Project -->
+            <div class="project-card">
+                <h2>DevSecure (Security Scanner)</h2>
+                <ul>
+                    <li>Key Features:
+                        <ul>
+                            <li>Website vulnerability scanning</li>
+                            <li>Security headers verification</li>
+                            <li>SSL certificate validation</li>
+                            <li>PDF report generation</li>
+                        </ul>
+                    </li>
+                    <li>Technologies:
+                        <ul>
+                            <li>Backend: Python with Flask</li>
+                            <li>Frontend: HTML, CSS, JavaScript</li>
+                            <li>Libraries: WeasyPrint, Requests</li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://github.com/DevanshSharma-GIT/DevSecure" 
+                   class="project-link" 
+                   target="_blank">
+                    View GitHub Repository
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Devansh's Portfolio</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169;DEVANSH.COM | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+        };
+    </script>
+</body>
+</html>

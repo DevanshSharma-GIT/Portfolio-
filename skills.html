@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devansh's Portfolio - Skills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav .left {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .secondSection {
+            max-width: 80vw;
+            margin: 50px auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .second-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .secondSection hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            margin: 20px auto;
+            width: 50%;
+            opacity: 0.5;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            width: 200px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.2s; }
+        .skill-card:nth-child(2) { animation-delay: 0.4s; }
+        .skill-card:nth-child(3) { animation-delay: 0.6s; }
+        .skill-card:nth-child(4) { animation-delay: 0.8s; }
+        .skill-card:nth-child(5) { animation-delay: 1s; }
+        .skill-card:nth-child(6) { animation-delay: 1.2s; }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            filter: brightness(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        .skill-card p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .certification-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            width: 350px;
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .certification-card:nth-child(1) { animation-delay: 0.3s; }
+        .certification-card:nth-child(2) { animation-delay: 0.6s; }
+        .certification-card:nth-child(3) { animation-delay: 0.9s; }
+
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .certification-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .certification-card ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .certification-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .certification-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #6a11cb;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(106, 17, 203, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff4d4d;
+            transform: rotate(90deg);
+        }
+
+        footer {
+            background: linear-gradient(90deg, #0e0e1a 0%, #1a1a2e 100%);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-rights {
+            text-align: center;
+            color: #666;
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+            opacity: 0.95;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .secondSection {
+                padding: 20px;
+            }
+
+            .secondSection h1 {
+                font-size: 2rem;
+            }
+
+            .skill-card, .certification-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .aboutMe {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .aboutMe h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .aboutMe h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 3px;
+        }
+
+        .aboutMe p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideIn 0.5s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aboutMe p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .aboutMe p:hover::before {
+            opacity: 1;
+        }
+
+        .aboutMe p:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .aboutMe p:nth-child(2) { animation-delay: 0.2s; }
+        .aboutMe p:nth-child(3) { animation-delay: 0.4s; }
+        .aboutMe p:nth-child(4) { animation-delay: 0.6s; }
+        .aboutMe p:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .skills-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="loaded">
+    <header>
+        <nav>
+            <div class="left">
+                Devansh's Portfolio
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="aboutMe">
+            <h1>Skills</h1>
+            <p>Hello! I'm Devansh, a passionate developer specializing in web and mobile applications with a strong focus on cutting-edge technologies and security practices. I have a robust foundation in diverse programming languages, frameworks, and cybersecurity principles, enabling me to tackle complex challenges and build innovative solutions.</p>
+            <p>My experience spans across front-end and back-end development, mobile app creation for both iOS and Android, and in-depth knowledge of cybersecurity, including ethical hacking and cloud security. I am committed to creating efficient, secure, and user-friendly applications while continuously expanding my technical expertise.</p>
+            <p>When I'm not immersed in code or exploring the latest security trends, you can find me engaging with the tech community, contributing to open-source projects, or staying updated with advancements in AI/ML and blockchain technologies.</p>
+            <p>My goal is to leverage my comprehensive skillset to develop impactful and secure solutions, always striving for excellence and innovation in the ever-evolving tech landscape.</p>
+            <p>Current Interests: <span id="element"></span></p>
+        </section>
+        <section class="secondSection">
+            <hr>
+            <h1>Technical Skills</h1>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <p>Python</p>
+                </div>
+                <div class="skill-card">
+                    <p>Java</p>
+                </div>
+                <div class="skill-card">
+                    <p>C</p>
+                </div>
+                <div class="skill-card">
+                    <p>Rust</p>
+                </div>
+                <div class="skill-card">
+                    <p>Go</p>
+                </div>
+                <div class="skill-card">
+                    <p>TypeScript</p>
+                </div>
+                <div class="skill-card">
+                    <p>Swift</p>
+                </div>
+                <div class="skill-card">
+                    <p>React</p>
+                </div>
+                <div class="skill-card">
+                    <p>Next.js</p>
+                </div>
+                <div class="skill-card">
+                    <p>Node.js</p>
+                </div>
+                <div class="skill-card">
+                    <p>Flask</p>
+                </div>
+                <div class="skill-card">
+                    <p>HTML5/CSS</p>
+                </div>
+                <div class="skill-card">
+                    <p>JavaScript (ES6+)</p>
+                </div>
+                <div class="skill-card">
+                    <p>SQL</p>
+                </div>
+                <div class="skill-card">
+                    <p>MongoDB</p>
+                </div>
+                <div class="skill-card">
+                    <p>Git</p>
+                </div>
+                <div class="skill-card">
+                    <p>Agile/Scrum</p>
+                </div>
+                <div class="skill-card">
+                    <p>Data Structures</p>
+                </div>
+                <div class="skill-card">
+                    <p>Algorithms</p>
+                </div>
+                <div class="skill-card">
+                    <p>Cryptography</p>
+                </div>
+                <div class="skill-card">
+                    <p>Ethical Hacking</p>
+                </div>
+                <div class="skill-card">
+                    <p>Penetration Testing</p>
+                </div>
+                <div class="skill-card">
+                    <p>Cloud Security (AWS/GCP)</p>
+                </div>
+                <div class="skill-card">
+                    <p>AI/ML (LangChain, Pinecone)</p>
+                </div>
+                <div class="skill-card">
+                    <p>Computer Vision (AR/VR)</p>
+                </div>
+                <div class="skill-card">
+                    <p>Blockchain</p>
+                </div>
+                <div class="skill-card">
+                    <p>CI/CD</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Certifications & Training</h1>
+            <div class="certifications-container">
+                <div class="certification-card">
+                    <h2>Certifications</h2>
+                    <ul>
+                        <li>Udemy iOS Development Bootcamp</li>
+                        <li><a href="#" id="webDevCert" style="color: white; text-decoration: none;">Udemy Web Development Bootcamp</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="certImage" src="udemy1.png" alt="Udemy Web Development Certificate">
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Devansh's Portfolio</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169;DEVANSH.COM | All Rights Reserved
+        </div>
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+            new Typed('#element', {
+                strings: ['<i>Full-Stack development</i>, ', 'iOS & Android development,', '&amp; CyberSecurity.'],
+                typeSpeed: 50,
+                loop: true,
+                backSpeed: 30,
+                backDelay: 1000
+            });
+
+            // Modal functionality
+            const modal = document.getElementById("certModal");
+            const certLink = document.getElementById("webDevCert");
+            const closeBtn = document.getElementsByClassName("close")[0];
+
+            certLink.onclick = function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
+
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        };
+    </script>
+</body>
+</html>

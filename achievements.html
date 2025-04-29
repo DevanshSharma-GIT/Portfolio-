@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Devansh's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .achievements-container,
+        .university-acceptances-container {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .achievement-card,
+        .university-acceptance-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .achievement-card:nth-child(1) { animation-delay: 0.2s; }
+        .achievement-card:nth-child(2) { animation-delay: 0.4s; }
+        .achievement-card:nth-child(3) { animation-delay: 0.6s; }
+        .achievement-card:nth-child(4) { animation-delay: 0.8s; }
+        .university-acceptance-card { animation-delay: 1s; }
+
+        .achievement-card:hover,
+        .university-acceptance-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .achievement-card h2,
+        .university-acceptance-card h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .achievement-card h2::after,
+        .university-acceptance-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 3px;
+        }
+
+        .achievement-card ul,
+        .university-acceptance-card ul {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            list-style: none;
+        }
+
+        .achievement-card ul li,
+        .university-acceptance-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .achievement-card ul li::before,
+        .university-acceptance-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #6a11cb;
+        }
+
+        .achievement-card ul ul li::before {
+            content: '•';
+            color: #2575fc;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .project-link:hover::before {
+            left: 100%;
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+        }
+
+        .university-acceptance-card a {
+            color: #6a11cb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .university-acceptance-card a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            transition: width 0.3s ease;
+        }
+
+        .university-acceptance-card a:hover::after {
+            width: 100%;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #0e0e1a 0%, #1a1a2e 100%);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-rights {
+            text-align: center;
+            color: #666;
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+            opacity: 0.95;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                height: auto;
+                padding: 15px;
+                flex-direction: column;
+            }
+
+            nav .left {
+                font-size: 1.5rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+            }
+
+            nav .right {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+
+            .dropdown {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+                padding: 10px 0;
+                z-index: 100;
+            }
+
+            .dropdown.open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .dropdown a {
+                padding: 15px;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .achievements-container,
+            .university-acceptances-container {
+                padding: 10px;
+                margin: 20px;
+                max-width: 90vw;
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-card,
+            .university-acceptance-card {
+                padding: 20px;
+            }
+
+            .achievement-card h2,
+            .university-acceptance-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-link {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+
+        .achievements-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                Devansh's Portfolio
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="achievements-container">
+            <h1>Achievements</h1>
+            <!-- New Hackathon Achievement -->
+            <div class="achievement-card">
+                <h2>National Level Hackathon Top 5 | BGSCET (2025)</h2>
+                <ul>
+                    <li>Secured Top 5 position among 1000+ participants from 50+ colleges</li>
+                    <li>Developed <strong>HeritEdge</strong> - Cultural Heritage Preservation Platform</li>
+                    <li>Key Features:
+                        <ul>
+                            <li>3D artifact scanning & digital archiving</li>
+                            <li>AR-based virtual museum experiences</li>
+                            <li>Blockchain-based provenance tracking</li>
+                            <li>AI-powered restoration suggestions</li>
+                        </ul>
+                    </li>
+                    <li>Tech Stack: React, Three.js, ARCore, Solidity, Python</li>
+                </ul>
+                <a href="https://devanshsharma-git.github.io/HeritEdge/" 
+                   class="project-link" 
+                   target="_blank">
+                    View Project
+                </a>
+            </div>
+
+            <!-- Existing Achievements -->
+            <div class="achievement-card">
+                <h2>French Exchange Program | Poitiers, France (Mar 2019)</h2>
+                <ul>
+                    <li>Head of Events.</li>
+                    <li>Represented India in a Global French Exchange Program.</li>
+                    <li>Actively participated in cross-cultural dialogues and community-oriented projects, including fundraising, volunteer work, and STEM education outreach.</li>
+                </ul>
+            </div>
+
+            <div class="achievement-card">
+                <h2>Student Council | Kolkata, India (Jan 2017 – May 2019)</h2>
+                <ul>
+                    <li>Vice-Captain (Milton).</li>
+                    <li>Leadership & Achievements: Served as Vice-Captain for two consecutive years, earned multiple Sports Day medals, led March Past events, conducted celebrity interviews, and contributed as a member of the Editorial Board.</li>
+                </ul>
+            </div>
+
+            <div class="achievement-card">
+                <h2>Content Creation + Esports</h2>
+                <ul>
+                    <li>Leading Content Creator & Streamer (Fortnite, Middle East): Achieved rapid growth and recognition.</li>
+                    <li>Epic Games Support-A-Creator Program Member: Partnered with Epic Games for content creation.</li>
+                    <li>Esports Tournament Winner: Secured championship titles in Streamer Cup, Fortnite Champion Series (FNCS), and LAN competitions.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="university-acceptances-container">
+            <div class="university-acceptance-card">
+                <h2>University Acceptances</h2>
+                <ul>
+                    <li>Scholarship Recipient: Admissions to highly ranked universities including:
+                        <ul>
+                            <li>University of London</li>
+                            <li>University of Michigan</li>
+                            <li>University of Sydney</li>
+                            <li>Penn State University</li>
+                            <li>Purdue University</li>
+                            <li>University of Manchester</li>
+                            <li>etc.</li>
+                        </ul>
+                    </li>
+                    <li><a href="unis.pdf" download="University_Acceptance_Letter">Download Acceptance Letter (PDF)</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Devansh's Portfolio</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169;DEVANSH.COM | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+        };
+    </script>
+</body>
+
+</html>
