@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Devansh's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        body.loaded { opacity: 1; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        nav ul { display: flex; justify-content: center; }
+        nav ul li { list-style: none; margin: 0 15px; }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff4d4d;
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover::after { width: 100%; }
+        .experience-container {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .experience-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .experience-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+        .experience-card h2 {
+            margin-bottom: 10px;
+            color: #ff4d4d;
+        }
+        .experience-card ul {
+            margin: 0 0 10px 20px;
+        }
+        .experience-card p {
+            margin-bottom: 0;
+        }
+        footer {
+            margin-top: 40px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 40px 0 0 0;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-first h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .footer-second ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-second ul li {
+            list-style: none;
+        }
+        .footer-second ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .footer-second ul li a:hover {
+            color: #ff4d4d;
+        }
+        .footer-rights {
+            text-align: center;
+            padding: 20px 0 0 0;
+            font-size: 0.9rem;
+            color: #eee;
+        }
+        @media (max-width: 768px) {
+            nav { height: auto; padding: 15px; flex-direction: column; }
+            .footer { flex-direction: column; align-items: center; }
+            .footer-second ul { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                Devansh's Portfolio
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="experience-container">
+            <h1 style="grid-column: 1/-1; margin-bottom: 20px;">Experience</h1>
+            <div class="experience-card">
+                <h2>EMVOKE Technologies PVT LTD, Delhi, India (May 2025–Present)</h2>
+                <ul>
+                    <li><strong>Full Stack Developer</strong></li>
+                    <li>Implementing and building software applications using React and Node.js.</li>
+                    <li>Managing both SQL and NoSQL databases, including MongoDB.</li>
+                    <li>Applying micro-service architecture design patterns and working on APIs.</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h2>Exide Energy Pvt Ltd, Bengaluru, India (Nov 2024)</h2>
+                <ul>
+                    <li><strong>Security Analyst Intern</strong></li>
+                    <li>Conducted security audits and trained staff on risk mitigation, achieving significant resource savings.</li>
+                    <li>Mitigated threats proactively, deployed software solutions, and strengthened organizational resilience.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Devansh's Portfolio</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                    <li><a href="contact-me.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169;DEVANSH.COM | All Rights Reserved
+        </div>
+    </footer>
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+        };
+    </script>
+</body>
+</html>
